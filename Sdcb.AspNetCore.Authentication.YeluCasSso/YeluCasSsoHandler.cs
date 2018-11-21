@@ -84,14 +84,7 @@ namespace Sdcb.AspNetCore.Authentication.YeluCasSso
 
         protected override async Task<AuthenticationTicket> CreateTicketAsync(ClaimsIdentity identity, AuthenticationProperties properties, OAuthTokenResponse tokens)
         {
-            // available options: 
-            // gender(number), phone(string), name(string), id(number), email(string), jobNumber(string)
-            identity.AddClaim(new Claim(ClaimTypes.Name, identity.FindFirst("name").Value));
-            identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, identity.FindFirst("id").Value));
-            identity.AddClaim(new Claim(ClaimTypes.Email, identity.FindFirst("email").Value));
-            identity.AddClaim(new Claim(ClaimTypes.Gender, identity.FindFirst("gender").Value));
-            identity.AddClaim(new Claim(ClaimTypes.MobilePhone, identity.FindFirst("phone").Value));
-            identity.AddClaim(new Claim(ClaimTypes.SerialNumber, identity.FindFirst("jobNumber").Value));
+            await Events.CreatingClaims(identity);
 
             var context = new OAuthCreatingTicketContext(new ClaimsPrincipal(identity), properties, Context, Scheme, Options, Backchannel, tokens);
             await Events.CreatingTicket(context);
@@ -123,7 +116,7 @@ namespace Sdcb.AspNetCore.Authentication.YeluCasSso
 
             return xdoc.XPathSelectElements("/cas:serviceResponse/cas:authenticationSuccess/cas:attributes//*", namespaceManager)
                 .Where(x => x.Name.NamespaceName == NamespaceName)
-                .Select(x => new Claim(x.Name.LocalName, x.Value));
+                .Select(x => new Claim($"cas:{x.Name.LocalName}", x.Value));
         }
 
         private string GetXmlErrorMessage(XDocument xdoc)
