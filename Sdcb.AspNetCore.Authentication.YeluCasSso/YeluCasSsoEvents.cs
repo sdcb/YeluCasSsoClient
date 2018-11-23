@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.OAuth;
+using Microsoft.AspNetCore.Http;
 
 namespace Sdcb.AspNetCore.Authentication.YeluCasSso
 {
@@ -12,7 +13,7 @@ namespace Sdcb.AspNetCore.Authentication.YeluCasSso
         /// <summary>
         /// Gets or sets the function that is invoked when the CreatingClaims method is invoked.
         /// </summary>
-        public Func<ClaimsIdentity, Task> OnCreatingClaims { get; set; } = c =>
+        public Func<HttpContext, ClaimsIdentity, Task> OnCreatingClaims { get; set; } = (h, c) =>
         {
             CreateDefaultClaims(c);
             return Task.CompletedTask;
@@ -23,9 +24,9 @@ namespace Sdcb.AspNetCore.Authentication.YeluCasSso
         /// </summary>
         /// <param name="identity">Contains the user System.Security.Claims.ClaimsIdentity.</param>
         /// <returns>A System.Threading.Tasks.Task representing the completed operation.</returns>
-        public Task CreatingClaims(ClaimsIdentity identity)
+        public Task CreatingClaims(HttpContext httpContext, ClaimsIdentity identity)
         {
-            return OnCreatingClaims(identity);
+            return OnCreatingClaims(httpContext, identity);
         }
 
         public static void CreateDefaultClaims(ClaimsIdentity claimsIdentity)

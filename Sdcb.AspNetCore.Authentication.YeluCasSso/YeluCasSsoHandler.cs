@@ -84,7 +84,7 @@ namespace Sdcb.AspNetCore.Authentication.YeluCasSso
 
         protected override async Task<AuthenticationTicket> CreateTicketAsync(ClaimsIdentity identity, AuthenticationProperties properties, OAuthTokenResponse tokens)
         {
-            await Events.CreatingClaims(identity);
+            await Events.CreatingClaims(Context, identity);
 
             var context = new OAuthCreatingTicketContext(new ClaimsPrincipal(identity), properties, Context, Scheme, Options, Backchannel, tokens);
             await Events.CreatingTicket(context);
