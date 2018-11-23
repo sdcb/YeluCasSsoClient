@@ -28,7 +28,13 @@ namespace Sdcb.AspNetCore.Authentication.YeluCasSso
             if (String.IsNullOrEmpty(YeluCasSsoEndpoint))
             {
                 throw new ArgumentException($"{nameof(YeluCasSsoEndpoint)} must be provided.");
-            }            
+            }
+        }
+
+        public new YeluCasSsoEvents Events
+        {
+            get { return (YeluCasSsoEvents)base.Events; }
+            set { base.Events = value; }
         }
     }
 }
