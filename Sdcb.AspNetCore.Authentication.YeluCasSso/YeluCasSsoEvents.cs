@@ -38,12 +38,12 @@ namespace Sdcb.AspNetCore.Authentication.YeluCasSso
 
         public static Dictionary<string, string> CasClaimsMap = new Dictionary<string, string>
         {
-            ["cas:id"] = ClaimTypes.NameIdentifier,
-            ["cas:name"] = ClaimTypes.Name,
-            ["cas:email"] = ClaimTypes.Email, 
-            ["cas:gender"] = ClaimTypes.Gender, 
-            ["cas:phone"] = ClaimTypes.MobilePhone, 
-            ["cas:jobNumber"] = ClaimTypes.SerialNumber, 
+            [CasConstants.Id] = ClaimTypes.NameIdentifier,
+            [CasConstants.Name] = ClaimTypes.Name,
+            [CasConstants.Email] = ClaimTypes.Email, 
+            [CasConstants.Gender] = ClaimTypes.Gender, 
+            [CasConstants.Phone] = ClaimTypes.MobilePhone, 
+            [CasConstants.JobNumber] = ClaimTypes.SerialNumber, 
         };
     }
 }
