@@ -1,4 +1,4 @@
-# Yelu CAS SSO Client [![NuGet](https://img.shields.io/badge/nuget-1.0.5-blue.svg)](https://www.nuget.org/packages/Sdcb.AspNetCore.Authentication.YeluCasSso/)
+# Yelu CAS SSO Client [![NuGet](https://img.shields.io/badge/nuget-0.1.3-blue.svg)](https://www.nuget.org/packages/Sdcb.AspNetCore.Authentication.YeluCasSso/)
 
 ## Integrate with ASP.NET Identity:
 In `Startup.cs` `ConfigureServices` method(replace the example url with yours):
