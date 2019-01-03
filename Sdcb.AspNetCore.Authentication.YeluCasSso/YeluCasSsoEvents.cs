@@ -33,7 +33,8 @@ namespace Sdcb.AspNetCore.Authentication.YeluCasSso
         {
             claimsIdentity.AddClaims(claimsIdentity.Claims
                 .Where(x => CasClaimsMap.ContainsKey(x.Type))
-                .Select(x => new Claim(CasClaimsMap[x.Type], x.Value)));
+                .Select(x => new Claim(CasClaimsMap[x.Type], x.Value))
+                .ToList());
         }
 
         public static Dictionary<string, string> CasClaimsMap = new Dictionary<string, string>
