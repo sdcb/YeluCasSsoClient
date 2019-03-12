@@ -11,6 +11,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Text.Encodings.Web;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Web;
 using System.Xml;
@@ -86,7 +87,7 @@ namespace Sdcb.AspNetCore.Authentication.YeluCasSso
         {
             await Events.CreatingClaims(Context, identity);
 
-            var context = new OAuthCreatingTicketContext(new ClaimsPrincipal(identity), properties, Context, Scheme, Options, Backchannel, tokens);
+            var context = new OAuthCreatingTicketContext(new ClaimsPrincipal(identity), properties, Context, Scheme, Options, Backchannel, tokens, new JsonElement());
             await Events.CreatingTicket(context);
             return new AuthenticationTicket(new ClaimsPrincipal(identity), properties, Scheme.Name);
         }
