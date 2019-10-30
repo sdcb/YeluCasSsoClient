@@ -4,12 +4,15 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <Authors>sdcb</Authors>
     <Version>1.1.0</Version>
+    <IsPackable>true</IsPackable>
     <Copyright>GPL</Copyright>
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/sdcb/yelucasssoclient</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <PackageReleaseNotes>1.1.0: Update to .NET Core 3.0, for .NET Core 2.0, please install 1.0.6
+
 1.0.6: Fix issue causing login failed.
+
 1.0.5: Add CasConstants.</PackageReleaseNotes>
     <Description>Yale CAS SSO authentication provider for ASP.NET Core.</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
