@@ -3,13 +3,19 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <Authors>sdcb</Authors>
-    <Version>1.1.0</Version>
+    <Version>2.0.0</Version>
     <IsPackable>true</IsPackable>
     <Copyright>GPL</Copyright>
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/sdcb/yelucasssoclient</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>1.1.0: Update to .NET Core 3.0, for .NET Core 2.0, please install 1.0.6
+    <LangVersion>12</LangVersion>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageReleaseNotes>2.0: Supports ForceHttps.
+      
+1.1.0: Update to .NET Core 3.0, for .NET Core 2.0, please install 1.0.6
 
 1.0.6: Fix issue causing login failed.
 
@@ -26,6 +32,10 @@
     <None Include="..\LICENSE">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
 
